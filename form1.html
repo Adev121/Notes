@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="reg">
+        <div>
+        <label for="Title"><b>Title :</b></label>
+        <input type="text" id="userTitle" required>
+        </div><br>
+        <label for="Body"><b>Body :</b></label>
+        <!-- <input type="text" id="userBody"> -->
+        <textarea name="body" id="userBody" required></textarea>
+        <br><br>
+        <input type="submit" value="Submit Data">
+    </form>
+    <h3 id="response" style="color: blue;"></h3>
+</body>
+<script>
+    const bookReg= document.getElementById("reg");
+    const formData={};
+    bookReg.addEventListener("submit",function(e){
+        e.preventDefault();
+
+        formData["userTitle"]=e.target.elements["userTitle"].value;
+        formData["userBody"]=e.target.elements["userBody"].value;
+        alert(JSON.stringify(formData));
+        sendData(formData);
+    });
+
+    async function sendData(formData){
+        const apiRawData=await fetch("https://jsonplaceholder.typicode.com/posts",{
+            method:"POST",
+            body:JSON.stringify(formData),
+            headers:{
+                "Content-type":"application/json; charset=UTF-8",
+            },
+        });
+
+        const SuccesResponse=await apiRawData.json();
+        // alert(JSON.stringify(SuccesResponse));
+        document.getElementById("response").innerHTML=`Book registered successfully with the id- ${SuccesResponse.id}`
+    }
+</script>
+</html>

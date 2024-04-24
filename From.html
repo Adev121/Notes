@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  h1{
+    text-align: center;
+  }
+  h2{
+    text-align: left;
+  }
+  h3{
+    text-align: right;
+  }
+  #box{
+    background-color: red;
+    width: 15rem;
+    height: 15rem;
+    text-align: center;
+  }
+  div{
+    background-color: yellow;
+  }
+  #box p{
+    position: relative;
+    top:45%;
+    /* left:10%; */
+  }
+  #box2{
+    position: absolute;
+    /* top:45%; */
+    /* left:10%; */
+    background-color: green;
+    width: 15rem;
+    height: 15rem;
+    top: 22rem;
+    /* left: 20px; */
+    z-index: 1;
+    transition: margin-top 2s ease-in-out;
+  }
+  #box2 p{
+    position: relative;
+    left:40%;
+    top: 50%;
+  }
+  #container{
+    background-color: black;
+  }
+  #box2:hover{
+    margin-top: 400px;
+    background-color: blueviolet;
+    border-radius: 50%;
+    transition: 1s;
+  }
+  .rect{
+    background-color: orange;
+    position: relative;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    top: 2rem;
+    transition: width 1s,height 1s,transform 2s ;
+
+  }
+  .rect:hover{
+    width:15rem ;
+    height: 15rem;
+    transform: rotate(360deg);
+    font-size: 20px;
+  }
+  .rect p{
+    position: relative;
+    top: 50%;
+    padding-left:4px;
+    text-shadow: 2px 2px grey;
+    font-size: 15px;
+  }
+#box4{
+  position: relative;
+  background-color: rgb(26, 127, 223);
+  left:50%;
+  width:45rem ;
+  height:10rem;
+  transform: rotate(0deg);
+  transition: 0.5s;
+  /* font-size: 20px; */
+}
+#box5{
+  position: relative;
+  background-color: rgb(6, 66, 41);
+  top: 40%;
+  left:50%;
+  width:45rem ;
+  height:10rem;
+  transform: rotate(0deg);
+  transition: 0.5s;
+  /* font-size: 20px; */
+  box-shadow: 4px 4px 2px grey;
+}
+#box4:hover{
+transform: scale(0.5);
+}
+#box5:hover{
+transform: skew(0deg,0deg);
+}
+</style>
+<body>
+    <!-- <form id="Reg-Form">
+    <label for="Email" name="email">Email</label>
+    <input type="text"> <br><br>
+    <label for="User" name="username">Username</label>
+    <input type="text"> <br><br>
+    <label for="fname">First Name</label>
+    <input type="text"><br><br>
+    <label for="lname">Last Name</label>
+    <input type="text"><br><br>
+    <label for="phone">Phone</label>
+    <input type="text"><br><br>
+    <label for="DOB">D.O.B</label>
+    <input type="date" id="dob" name="dob" max="2030-01-01" required><br><br>
+    <input type="radio" name="marital" id="martail-status">Married
+    <input type="radio" name="marital" id="martail-status">Unmarried<br><br>
+    <input type="checkbox" id="sub1">Maths
+    <input type="checkbox" id="sub2">Hindi
+    <input type="checkbox" id="sub3">English
+    <input type="checkbox" id="sub4">Science
+    <input type="checkbox" id="sub5">Computer
+    <br><br>
+    <label for="cars">Choose a car:</label>
+  <select id="cars" name="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select><br><br>
+    <button type="Submit">Submit</button>
+</form>
+<meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="23">at 50/100</meter>
+<meter if="meter" min="0" max="200" low="20" optimum="60" high="75" value="60" style="font-size: 150px; border: 10px solid black; border-radius: 50%;"></meter>
+<progress min="0" max="100" value="70" style="font-size: 50px; height: 120px;  "></progress>-->
+<h1>This is a test page</h1> 
+<h2>This is a test page left</h2> 
+<h3>This is a test page right</h3> 
+<h4 style="text-align: left;text-decoration: underline;">Alignment text</h4>
+
+<div id="container">
+  <div id="box">
+    <p>BOX1</p>
+  </div>
+  <div id="box2">
+    <p>BOX2</p>
+  </div>
+</div>
+<div class="rect">
+<p>BOX</p>
+</div>
+<div id="box4">
+  <p>Box4</p>
+</div>
+
+<div id="box5">
+  <p>Box5</p>
+</div>
+</body>
+<script>
+    const myRegForm=document.getElementById("Reg-Form") ;
+    myRegForm.addEventListener("submit",function (event){
+        event.preventDefault();
+    const usrName= myRegForm.elements["username"].value;
+    const Email= myRegForm.elements["email"].value;
+
+    let postdata={
+      title:usrName,
+      body: email,
+      userId:87
+    };
+    postDataToApi(postData);
+    });
+    
+    async function postDataToApi(postData)
+    {
+const apiRawData=fetch("https://jsonplaceholder.typicode.com/posts",{
+  method:"POST",
+  body: JSON.stringify(postData),
+  headers:{
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+const finalResponseData =  await apiRawData.json();
+    }
+</script>
+</html>

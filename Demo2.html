@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Search</title>
+</head>
+<body>
+    <h1>Product Search</h1>
+
+    <!-- Search input and button -->
+    <input type="text" id="searchInput" placeholder="Enter a search term">
+    <button id="searchButton">Search</button>
+
+    <!-- Display search results here -->
+    <ul id="searchResults"></ul>
+
+    <script>
+        // Function to fetch product data based on the search term
+        function fetchProductData(searchTerm) {
+            fetch(`https://fakestoreapi.com/products?search=${searchTerm}`)
+                .then(response => response.json())
+                .then(data => {
+                    displaySearchResults(data);
+                })
+                .catch(error => {
+                    console.error("Error fetching product data: " + error);
+                });
+        }
+
+        // Function to display search results on the webpage
+        function displaySearchResults(results) {
+            const searchResultsList = document.getElementById("searchResults");
+
+            // Clear previous search results
+            searchResultsList.innerHTML = '';
+
+            if (results.length === 0) {
+                const listItem = document.createElement("li");
+                listItem.textContent = "No results found.";
+                searchResultsList.appendChild(listItem);
+            } else {
+                results.forEach(product => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = "Product ID: " + product.id+"  Product Title :"+product.title;
+                    searchResultsList.appendChild(listItem);
+                });
+            }
+        }
+
+        // Add a click event listener to the search button
+        document.getElementById("searchButton").addEventListener("click", function () {
+            const searchTerm = document.getElementById("searchInput").value;
+            fetchProductData(searchTerm);
+        });
+    </script>
+</body>
+</html>

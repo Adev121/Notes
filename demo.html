@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">Hi this a test Website</h1>
+    <br>
+    <p id="para1">I love making webpages what is your idea</p>
+    <p id="para2">I love javascript</p>
+    <p id="para3">I  LOve CSS</p> 
+    <p id="para4">I  LOve HTML</p> 
+    <button class="btn1">Delete Element</button>
+    <button class="btn2">Create Element</button>
+    <button class="btn2">Update Element</button><br>
+    <input type="search">
+</body>
+<script>
+    // console.log(document.getElementById("para1"));
+    // console.log(document.getElementById("para1").innerText);
+    // console.log(document.getElementById("para1").innerText="hello world");
+    // let newElement = document.createElement("h2").innerText="Hi this is adding tag";
+    // console.log(document.body.appendChild(newElement));
+
+// console.log(document.getElementById("para1").innerText);
+// document.getElementById("para1").innerText = "hello world";
+// let newElement = document.createElement("h2");
+// newElement.innerText = "Hi, this is adding a tag";
+// document.getElementById("para1").appendChild(newElement);
+// console.log(document.body); // To see the updated document.body
+let newEle = document.createElement("p");
+newEle.innerHTML="<b>Hi appending a new element</b>";
+document.getElementById("para3").appendChild(newEle);
+document.querySelector(".btn1").addEventListener("click",() =>{
+    document.getElementById("para3").removeChild(newEle);
+});
+document.querySelector(".btn2").addEventListener("click",()=>{
+    newElement2=document.createElement("h2"); //create
+    newElement2.innerHTML="<i>Hi This a creating a new Element 2</i>"; //inner text
+    document.getElementById("para3").appendChild(newElement2);
+});
+document.querySelector(".btn3").addEventListener("click", () => {
+    document.getElementById("para4").innerText = "Hi, I am para4";
+});
+
+// let newEle = document.createElement("p");
+//         newEle.innerHTML = "<b>Hi appending a new element</b>";
+//         document.getElementById("para3").appendChild(newEle);
+        
+//         document.querySelector(".btn").addEventListener("click", function() {
+//             document.getElementById("para3").removeChild(newEle);
+//         });
+</script>
+</html>
